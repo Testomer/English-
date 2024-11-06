@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz on "I Feel at Home Already!"</title>
+<style>
+    body {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: #4CAF50;
+    }
+    .summary, .question {
+        background-color: #333333;
+        padding: 20px;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 10px;
+    }
+    .question h3 {
+        color: #ffeb3b;
+    }
+    .options button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .options button:hover {
+        background-color: #45a049;
+    }
+    .result {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<h1>Quiz on "I Feel at Home Already!"</h1>
+
+<div class="summary">
+    <h2>Summary</h2>
+    <p>The lesson "I feel at home already!" focuses on a family preparing their home for a visit from their grandmother. The family, the Qadris, live in London, and they have been working for a week to get the house ready. Tasks include buying a new carpet, setting up a wardrobe, putting up curtains, and arranging flowers. They face a tight deadline to complete everything before Grandma's arrival. The lesson covers vocabulary related to household items and activities, along with expressions used for making preparations.</p>
+</div>
+
+<div id="quiz"></div>
+
+<script>
+const questions = [
+    { 
+        text: "Who is visiting the Qadri family?", 
+        options: ["Grandfather", "Grandmother", "Aunt"], 
+        answer: 1 
+    },
+    { 
+        text: "How long have the Qadris been living in London?", 
+        options: ["A year", "Six months", "Two years"], 
+        answer: 0 
+    },
+    { 
+        text: "What has the family been planning for a while but hasn't completed yet?", 
+        options: ["Preparing the guest bedroom", "Buying a new TV", "Painting the house"], 
+        answer: 0 
+    },
+    { 
+        text: "What is Waleed's suggestion to prepare for Grandma's visit?", 
+        options: ["Clean the house", "Make a list of tasks", "Buy new curtains"], 
+        answer: 1 
+    },
+    { 
+        text: "What two items does Mrs. Qadiri mention that need to be bought?", 
+        options: ["Curtains and carpet", "Carpet and wardrobe", "Table and chair"], 
+        answer: 1 
+    },
+    { 
+        text: "What does Lana suggest buying in addition to a carpet?", 
+        options: ["Curtains", "New bed", "Wardrobe"], 
+        answer: 2 
+    },
+    { 
+        text: "What has Mr. Qadiri already bought for the home?", 
+        options: ["A carpet", "A wardrobe", "Curtains"], 
+        answer: 1 
+    },
+    { 
+        text: "Why does Mrs. Qadiri feel rushed to finish?", 
+        options: ["Grandma is arriving soon", "The kids are tired", "They are out of budget"], 
+        answer: 0 
+    },
+    { 
+        text: "Who is supposed to help put up the curtains?", 
+        options: ["Lana", "Waleed", "Mr. Qadiri"], 
+        answer: 1 
+    },
+    { 
+        text: "Where are Mr. Qadiri and Lana going while Waleed helps at home?", 
+        options: ["Airport", "Grocery store", "Park"], 
+        answer: 0 
+    },
+    { 
+        text: "What does Mrs. Qadiri say after the curtains are finally up?", 
+        options: ["Good job!", "Fantastic!", "We need more time!"], 
+        answer: 1 
+    },
+    { 
+        text: "Why is there still a sense of urgency even after the curtains are up?", 
+        options: ["They need more decorations", "The flowers are not ready", "They forgot the carpet"], 
+        answer: 1 
+    },
+    { 
+        text: "What does Mrs. Qadiri ask to be done last before Grandma’s arrival?", 
+        options: ["Put up the flowers", "Clean the floor", "Rearrange furniture"], 
+        answer: 0 
+    },
+    { 
+        text: "How does Grandma feel about the flowers when she sees them?", 
+        options: ["Disappointed", "Indifferent", "Happy"], 
+        answer: 2 
+    },
+    { 
+        text: "What phrase does Grandma use to express her happiness about the room?", 
+        options: ["It's lovely!", "I feel at home already!", "Thank you!"], 
+        answer: 1 
+    }
+];
+
+const quizDiv = document.getElementById("quiz");
+
+questions.forEach((question, index) => {
+    const questionDiv = document.createElement("div");
+    questionDiv.classList.add("question");
+
+    const questionText = document.createElement("h3");
+    questionText.textContent = (index + 1) + ". " + question.text;
+    questionDiv.appendChild(questionText);
+
+    const optionsDiv = document.createElement("div");
+    optionsDiv.classList.add("options");
+
+    question.options.forEach((option, i) => {
+        const optionButton = document.createElement("button");
+        optionButton.textContent = option;
+        optionButton.onclick = () => checkAnswer(index, i, question.answer, resultDiv);
+        optionsDiv.appendChild(optionButton);
+    });
+
+    questionDiv.appendChild(optionsDiv);
+
+    const resultDiv = document.createElement("div");
+    resultDiv.classList.add("result");
+    questionDiv.appendChild(resultDiv);
+
+    quizDiv.appendChild(questionDiv);
+});
+
+function checkAnswer(questionIndex, selectedOption, correctAnswer, resultDiv) {
+    if (selectedOption === correctAnswer) {
+        resultDiv.textContent = "CORRECT 💯";
+        resultDiv.style.color = "green";
+    } else {
+        resultDiv.textContent = "FALSE.";
+        resultDiv.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
